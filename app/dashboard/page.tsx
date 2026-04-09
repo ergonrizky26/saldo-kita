@@ -266,17 +266,17 @@ export default async function DashboardPage(props: DashboardProps) {
                                 {formatIDR(netWorth)}
                             </div>
 
-                            <div className="grid grid-cols-3 gap-4 mt-6">
-                                <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-4">
+                                <div className="col-span-2 sm:col-span-1 bg-slate-50 p-3 rounded-xl border border-slate-100">
                                     <div className="flex items-center gap-2 text-slate-500 mb-1"><Building2 className="w-4 h-4" /> Aset & Saldo</div>
                                     <div className="font-bold text-slate-700">{formatIDR(totalAssets)}</div>
                                 </div>
-                                <div className="bg-green-50 p-4 rounded-xl border border-green-100">
+                                <div className="col-span-1 bg-green-50 p-3 rounded-xl border border-green-100">
                                     <div className="flex items-center gap-2 text-green-600 mb-1"><TrendingUp className="w-4 h-4" /> Piutang</div>
                                     <div className="font-bold text-green-700">{formatIDR(totalPiutang)}</div>
                                 </div>
-                                <div className="bg-red-50 p-4 rounded-xl border border-red-100">
-                                    <div className="flex items-center gap-2 text-red-600 mb-1"><TrendingDown className="w-4 h-4" /> Utang Pribadi</div>
+                                <div className="col-span-1 bg-red-50 p-3 rounded-xl border border-red-100">
+                                    <div className="flex items-center gap-2 text-red-600 mb-1 whitespace-nowrap"><TrendingDown className="w-4 h-4" /> Utang Pribadi</div>
                                     <div className="font-bold text-red-700">{formatIDR(totalUtang)}</div>
                                 </div>
                             </div>

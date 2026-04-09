@@ -25,6 +25,12 @@ export default async function CategoriesPage() {
     const expenses = dbCategories.filter(c => c.type === 'Expense');
     const incomes = dbCategories.filter(c => c.type === 'Income');
 
+    // 1. BUAT FUNGSI JEMBATAN DI SINI (Di dalam CategoriesPage, sebelum return)
+    async function formActionTambah(formData: FormData) {
+        "use server"; // 👉 Paspor wajib untuk Next.js
+        await createCategory(formData); // Panggil fungsi aslinya di sini
+    }
+
     return (
         <div className="min-h-screen bg-slate-50 pb-20">
             <div className="max-w-4xl mx-auto p-4 md:p-8 pt-8">
@@ -43,7 +49,7 @@ export default async function CategoriesPage() {
                     </div>
 
                     {/* FORM TAMBAH KATEGORI */}
-                    <form action={async (formData) => { await createCategory(formData); }} className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col sm:flex-row gap-3 items-end">
+                    <form action={formActionTambah} className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col sm:flex-row gap-3 items-end">
                         <div className="flex-1 w-full">
                             <label className="block text-xs font-bold text-slate-500 mb-1 uppercase tracking-wide">Nama Kategori Baru</label>
                             <input name="name" required placeholder="Contoh: Kopi, Gaji, Kosan..." className="w-full p-2.5 border border-slate-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />

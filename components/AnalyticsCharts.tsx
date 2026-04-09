@@ -27,18 +27,18 @@ export default function AnalyticsCharts({
 
     return (
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 mt-6">
-            <div className="flex justify-between items-center mb-6">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
                 <h2 className="text-lg font-bold text-slate-800">Analitik Keuangan</h2>
-                <div className="flex bg-slate-100 p-1 rounded-lg">
+                <div className="flex w-full sm:w-auto bg-slate-100 p-1 rounded-xl">
                     <button
                         onClick={() => setActiveTab('trend')}
-                        className={`text-sm px-3 py-1.5 rounded-md font-medium transition ${activeTab === 'trend' ? 'bg-white shadow text-slate-800' : 'text-slate-500'}`}
+                        className={`flex-1 sm:flex-none text-[11px] sm:text-sm px-2 py-2 sm:py-1.5 rounded-md font-bold sm:font-medium transition ${activeTab === 'trend' ? 'bg-white shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
                     >
                         Tren Bulanan
                     </button>
                     <button
                         onClick={() => setActiveTab('composition')}
-                        className={`text-sm px-3 py-1.5 rounded-md font-medium transition ${activeTab === 'composition' ? 'bg-white shadow text-slate-800' : 'text-slate-500'}`}
+                        className={`flex-1 sm:flex-none text-[11px] sm:text-sm px-2 py-2 sm:py-1.5 rounded-md font-bold sm:font-medium transition ${activeTab === 'composition' ? 'bg-white shadow text-slate-800' : 'text-slate-500 hover:text-slate-700'}`}
                     >
                         Komposisi Pengeluaran
                     </button>
@@ -77,7 +77,7 @@ export default function AnalyticsCharts({
                                     paddingAngle={5}
                                     dataKey="value"
                                     label={({ name, percent }) => (
-                                        <text fontSize="10" fill="#64748b" dominantBaseline="central">
+                                        <text fontSize="10" fill="#64748b">
                                             {`${name} ${(Number(percent) * 100).toFixed(0)}%`}
                                         </text>
                                     )}
@@ -88,6 +88,15 @@ export default function AnalyticsCharts({
                                     ))}
                                 </Pie>
                                 <Tooltip formatter={(value: any) => formatIDR(Number(value || 0))} />
+                                <Legend
+                                    layout="horizontal"
+                                    verticalAlign="bottom"
+                                    align="center"
+                                    wrapperStyle={{
+                                        fontSize: "12px",
+                                        paddingTop: "20px"
+                                    }}
+                                />
                             </PieChart>
                         </ResponsiveContainer>
                     ) : (
